@@ -27,8 +27,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class Year:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9G-fJ-kru">
-                                <rect key="frame" x="31" y="157" width="85" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Class Year:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9G-fJ-kru">
+                                <rect key="frame" x="31" y="158" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -94,8 +94,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="ClassLabel" destination="m9G-fJ-kru" id="heh-yz-pfk"/>
                         <outlet property="ClassTextField" destination="ZDR-tH-DpS" id="rEL-3K-SQp"/>
                         <outlet property="DisplayLabel" destination="6HQ-xb-T0T" id="7Sv-3E-WyZ"/>
+                        <outlet property="NameLabel" destination="ZyQ-Sq-usL" id="vUm-xJ-EUk"/>
                         <outlet property="NameTextField" destination="EJs-pg-Wou" id="QJO-ae-hSs"/>
                         <outlet property="SubmitButton" destination="6IO-Sm-U3s" id="Myk-DE-WCT"/>
                     </connections>
