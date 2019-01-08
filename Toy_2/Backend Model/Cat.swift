@@ -24,7 +24,7 @@ class Cat: NSObject {
         count += 1
     }
     
-    class func loadCats() -> Void {
+    class func loadCats(completion: @escaping (Array<Dictionary<String, String>>) -> Void) -> Void {
         let url = URL(string: "http://www.chenziwe.com/cats")
         let session = URLSession(configuration: .default)
         var request = URLRequest(url:url!)
@@ -37,11 +37,7 @@ class Cat: NSObject {
             print("Got our cats!")
             let result = try? JSONSerialization.jsonObject(with: data!, options: []) as! Array<Dictionary<String, String>>
             
-            for dict in result!{
-                let imageURL = URL(string: dict["image"]!)
-                let image = UIImage(data: try! Data(contentsOf: imageURL!))
-                Cat.addCat(name: dict["name"]!, age: Int(dict["age"]!), image: image, type: dict["type"]!)
-            }
+            completion(result!)
         }
         task.resume()
         
