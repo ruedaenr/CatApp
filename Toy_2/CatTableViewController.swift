@@ -29,19 +29,16 @@ class CatTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return Cat.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CatCell", for: indexPath) as! CatTableViewCell
 
-        if(indexPath.row == 0){
-            cell.NameLabel.text = "Adam"
-            cell.ImageView.image = #imageLiteral(resourceName: "Cat3")
-        }else{
-            cell.NameLabel.text = "Alice"
-            cell.ImageView.image = #imageLiteral(resourceName: "Cat1")
-        }
+        
+        cell.NameLabel.text = Cat.catArr[indexPath.row].name
+        cell.ImageView.image = Cat.catArr[indexPath.row].image
+        
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
             return 100

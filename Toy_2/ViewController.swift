@@ -71,6 +71,10 @@ class ViewController: UIViewController {
             enterSubmitMode()
         }
         
+        if(Cat.count == 0){
+            Cat.addCat(name: "Alice", age: 1, image: #imageLiteral(resourceName: "Cat3"), type: "British Shorthair")
+            Cat.addCat(name: "Bob", age: 3, image: #imageLiteral(resourceName: "Cat2"), type: "American Shorthair")
+        }
     }
     
     override func didReceiveMemoryWarning() {
