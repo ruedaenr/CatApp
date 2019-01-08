@@ -24,5 +24,26 @@ class Cat: NSObject {
         count += 1
     }
     
-    
+    class func loadCats() -> Void {
+        let url = URL(string: "http://www.chenziwe.com/cats")
+        let session = URLSession(configuration: .default)
+        var request = URLRequest(url:url!)
+        request.httpMethod = "GET"
+        let task = session.dataTask(with: request) { (data, response, error) in
+            if(error != nil){
+                print("Failed to load Cats!")
+                return
+            }
+            print("Got our cats!")
+            let result = try? JSONSerialization.jsonObject(with: data!, options: []) as! Array<Dictionary<String, String>>
+            
+            for dict in result!{
+                let imageURL = URL(string: dict["image"]!)
+                let image = UIImage(data: try! Data(contentsOf: imageURL!))
+                Cat.addCat(name: dict["name"]!, age: Int(dict["age"]!), image: image, type: dict["type"]!)
+            }
+        }
+        task.resume()
+        
+    }
 }

@@ -12,15 +12,10 @@ class ViewController: UIViewController {
     var submitted : Bool = false
     
     @IBOutlet weak var NameLabel: UILabel!
-    
     @IBOutlet weak var ClassLabel: UILabel!
-    
     @IBOutlet weak var NameTextField: UITextField!
-    
     @IBOutlet weak var ClassTextField: UITextField!
-    
     @IBOutlet weak var SubmitButton: UIButton!
-    
     @IBOutlet weak var DisplayLabel: UILabel!
     
     func enterClearMode() -> Void {
@@ -72,8 +67,7 @@ class ViewController: UIViewController {
         }
         
         if(Cat.count == 0){
-            Cat.addCat(name: "Alice", age: 1, image: #imageLiteral(resourceName: "Cat3"), type: "British Shorthair")
-            Cat.addCat(name: "Bob", age: 3, image: #imageLiteral(resourceName: "Cat2"), type: "American Shorthair")
+            Cat.loadCats()
         }
     }
     
