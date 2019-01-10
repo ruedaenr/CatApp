@@ -199,6 +199,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="DoneButton" destination="DOp-0r-dWy" id="oWC-26-Mks"/>
                         <outlet property="TableView" destination="gvZ-C7-wve" id="FJW-w1-tVb"/>
                     </connections>
                 </viewController>

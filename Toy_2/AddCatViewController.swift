@@ -22,11 +22,15 @@ class AddCatViewController: UIViewController, UITableViewDelegate, UITableViewDa
         dismiss(animated: true, completion: nil)
     }
     
+    @IBOutlet weak var DoneButton: UIBarButtonItem!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         TableView.delegate = self
         TableView.dataSource = self
         addCatViewController = self
+        DoneButton.isEnabled = false
     }
     
     // MARK: - Table View Methods
