@@ -1,6 +1,10 @@
 import UIKit
 
-class AddCatTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
+var age: Int = -1
+var name: String = ""
+var type: String = ""
+
+class AddCatTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
 
     @IBOutlet weak var TextView: UITextView!
     @IBOutlet weak var PickerView: UIPickerView!
@@ -9,6 +13,7 @@ class AddCatTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDa
         super.awakeFromNib()
         PickerView.delegate = self
         PickerView.dataSource = self
+        TextView.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,5 +32,39 @@ class AddCatTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDa
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return String(row)
     }
-
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        age = row
+        //reload the second section in table view
+        addCatViewController?.TableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)        
+    }
+    
+    // MARK: Text View Methods
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if(textView.textColor == UIColor.gray){
+            textView.text = ""
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if(textView.tag == 0){
+            name = textView.text
+        } else{
+            type = textView.text
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if(textView.text == ""){
+            if(textView.tag == 0){
+                textView.text = "Name"
+            } else{
+                textView.text = "Type"
+            }
+            textView.textColor = UIColor.gray
+        }
+    }
+    
+    
 }

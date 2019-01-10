@@ -1,5 +1,7 @@
 import UIKit
 
+var addCatViewController: AddCatViewController? = nil
+
 class AddCatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var isPickerViewOpen: Bool = false
@@ -7,9 +9,16 @@ class AddCatViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var TableView: UITableView!
     
     @IBAction func ClearButtonTapped(_ sender: Any) {
+        name = ""
+        type = ""
+        age = -1
         dismiss(animated: true, completion: nil)
     }
     @IBAction func DoneButtonTapped(_ sender: Any) {
+        Cat.addCat(name: name, age: age, image: #imageLiteral(resourceName: "Cat5"), type: type)
+        name = ""
+        type = ""
+        age = -1
         dismiss(animated: true, completion: nil)
     }
     
@@ -17,7 +26,7 @@ class AddCatViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         TableView.delegate = self
         TableView.dataSource = self
-        
+        addCatViewController = self
     }
     
     // MARK: - Table View Methods
@@ -39,6 +48,7 @@ class AddCatViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AddCatCell", for: indexPath) as! AddCatTableViewCell
+        cell.TextView.tag = indexPath.row
         cell.TextView.textContainer.maximumNumberOfLines = 1;
         cell.TextView.textContainer.lineBreakMode = .byTruncatingTail
         cell.PickerView.isHidden = true
@@ -59,8 +69,13 @@ class AddCatViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell.TextView.isSelectable = false
                 cell.TextView.textColor = UIColor.black
                 cell.TextView.isUserInteractionEnabled = false
-                cell.TextView.text = "Age"
                 cell.TextView.isHidden = false
+                if(age == -1){
+                    cell.TextView.text = "Age"
+                } else{
+                    cell.TextView.text = "Age " + String(age)
+                }
+                
             }else{
                 cell.TextView.isHidden = true
                 cell.PickerView.isHidden = false
