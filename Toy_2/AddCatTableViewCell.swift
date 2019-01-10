@@ -5,6 +5,8 @@ var name: String = ""
 var type: String = ""
 
 class AddCatTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
+    
+    var addCatViewController: AddCatViewController?
 
     @IBOutlet weak var TextView: UITextView!
     @IBOutlet weak var PickerView: UIPickerView!

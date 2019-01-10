@@ -1,7 +1,5 @@
 import UIKit
 
-var addCatViewController: AddCatViewController? = nil
-
 class AddCatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var isPickerViewOpen: Bool = false
@@ -29,7 +27,6 @@ class AddCatViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         TableView.delegate = self
         TableView.dataSource = self
-        addCatViewController = self
         DoneButton.isEnabled = false
     }
     
@@ -85,7 +82,7 @@ class AddCatViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cell.PickerView.isHidden = false
             }
         }
-        
+        cell.addCatViewController = self
         return cell
     }
     
