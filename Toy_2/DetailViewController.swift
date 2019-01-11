@@ -23,15 +23,5 @@ class DetailViewController: UIViewController {
         TypeLabel.text = type
         ImageView.image = image
     }
-    
-
-        /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
-    */
 
 }

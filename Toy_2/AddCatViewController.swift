@@ -80,6 +80,11 @@ class AddCatViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }else{
                 cell.TextView.isHidden = true
                 cell.PickerView.isHidden = false
+                if(age == -1){
+                    _ = [cell.PickerView .selectRow(0, inComponent: 0, animated: true)];
+                } else {
+                    _ = [cell.PickerView .selectRow(age, inComponent: 0, animated: true)];
+                }
             }
         }
         cell.addCatViewController = self
@@ -112,12 +117,5 @@ class AddCatViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.reloadSections(IndexSet.init(integer: 1), with: .automatic)
         }
     }
-     /*
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
